@@ -1,0 +1,140 @@
+* { box-sizing: border-box; }
+body {
+  font-family: 'Rubik', sans-serif;
+  margin: 0;
+  background: #fffefc;
+  color: #333;
+}
+
+/* --- Header --- */
+header {
+  background: #b51e1e;
+  color: white;
+  padding: 15px 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.burger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.burger div {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 4px;
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .burger {
+    display: flex;
+  }
+
+  nav {
+    display: none;
+    flex-direction: column;
+    background-color: #b51e1e;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+  }
+
+  nav.active {
+    display: flex;
+  }
+}
+
+/* --- Tabs Content --- */
+.tab-content {
+  display: none;
+  padding: 30px 20px;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* --- Каталог стилі --- */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.card {
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.card h3 { margin: 10px 0 5px; }
+.price { font-weight: bold; color: #d62828; margin-bottom: 10px; }
+
+.button {
+  background-color: #60a917;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.about p {
+  max-width: 800px;
+  margin: auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* --- Контакти стилі --- */
+#contacts p {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  max-width: 600px;
+  margin: 0 auto 10px;
+}
