@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Каталог – Наминайко</title>
+  <link rel="stylesheet" href="style.css">
+  </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Наминайко</div>
+        <nav>
+          <a href="index.html">Головна</a>
+          <a href="catalog.html">Каталог</a>
+          <a href="about.html">Про нас</a>
+          <a href="contact.html">Контакти</a>
+        </nav>
+        <div class="cart-indicator">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span id="cart-count">0</span>
+        </div>
+      </header>
+      
+
+<main>
+  <h1>Каталог шаурми</h1>
+  <div class="menu-grid" id="product-list">
+    <!-- Cards inserted dynamically -->
+  </div>
+
+  <div class="cart">
+    <h2><i class="fa-solid fa-basket-shopping"></i> Ваш кошик</h2>
+    <div id="cart-items"></div>
+    <div class="cart-total" id="cart-total"></div>
+    <button class="clear-btn" onclick="clearCart()"><i class="fa-solid fa-trash"></i> Очистити кошик</button>
+  </div>
+</main>
+
+<script>
+  const products = [
+    { name: 'Шаурма XL', price: 92, image: 'images/sav1.png' },
+    { name: 'Шаурма M', price: 60, image: 'images/sav2.png' },
+    { name: 'Шаурма XXL', price: 100, image: 'images/sav3.png' },
+    { name: 'Перчена', price: 85, image: 'images/sav4.png' },
+    { name: 'Веганська', price: 78, image: 'images/sav4.png' },
+    { name: 'Класична', price: 70, image: 'images/sav2.png' },
+    { name: 'Гостра BBQ', price: 95, image: 'images/sav1.png' },
+    { name: 'Курка з сиром', price: 88, image: 'images/sav3.png' }
+  ];
+
+  let cart = [];
+
+  function renderProducts() {
+    const container = document.getElementById('product-list');
+    products.forEach((item, index) => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <img src="${item.image}" alt="${item.name}">
+        <h3>${item.name}</h3>
+        <div class="price">${item.price} грн</div>
+        <button onclick="addToCart(${index})">У кошик</button>
+      `;
+      container.appendChild(card);
+    });
+  }
+
+  function addToCart(index) {
+    const item = products[index];
+    cart.push(item);
+    updateCartCount();
+    saveCart();
+    renderCart();
+  }
+
+  function updateCartCount() {
+    document.getElementById('cart-count').textContent = cart.length;
+  }
+
+  function saveCart() {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
+
+  function loadCart() {
+    const saved = localStorage.getItem('cart');
+    if (saved) {
+      cart = JSON.parse(saved);
+      updateCartCount();
+    }
+  }
+
+  function renderCart() {
+    const container = document.getElementById('cart-items');
+    const totalElem = document.getElementById('cart-total');
+    container.innerHTML = '';
+    let total = 0;
+
+    if (cart.length === 0) {
+      container.innerHTML = '<p>Кошик порожній.</p>';
+      totalElem.textContent = '';
+      return;
+    }
+
+    cart.forEach((item, index) => {
+      const row = document.createElement('div');
+      row.className = 'cart-grid';
+      row.innerHTML = `
+        <span><i class="fa-solid fa-utensils"></i> ${item.name}</span>
+        <span>${item.price} грн</span>
+        <button onclick="removeFromCart(${index})"><i class="fa-solid fa-xmark"></i></button>
+      `;
+      container.appendChild(row);
+      total += item.price;
+    });
+
+    totalElem.textContent = `Загальна сума: ${total} грн`;
+  }
+
+  function removeFromCart(index) {
+    cart.splice(index, 1);
+    saveCart();
+    updateCartCount();
+    renderCart();
+  }
+
+  function clearCart() {
+    cart = [];
+    saveCart();
+    updateCartCount();
+    renderCart();
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    loadCart();
+    renderProducts();
+    renderCart();
+  });
+</script>
+
+</body>
+</html>

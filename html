@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Наминайко – Шаурма</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">Наминайко</div>
+  <div class="burger" onclick="toggleMenu()">
+    <div></div><div></div><div></div>
+  </div>
+  <nav id="nav">
+    <a href="#" onclick="openTab('home')">Головна</a>
+    <a href="#" onclick="openTab('catalog')">Каталог</a>
+    <a href="#" onclick="openTab('about')">Про нас</a>
+    <a href="#" onclick="openTab('contacts')">Контакти</a>
+  </nav>
+</header>
+
+<!-- Вкладки -->
+<section id="home" class="tab-content active">
+  <h2>Ласкаво просимо до Наминайко!</h2>
+  <p>Мережа найсмачнішої шаурми у Хмельницькому. Доставка до 30 хвилин. Кожна 10-та безкоштовно!</p>
+</section>
+
+<section id="catalog" class="tab-content">
+  <h2>Каталог</h2>
+  <div class="menu-grid">
+    <div class="card">
+      <img src="sav1.png" alt="Шаурма 1">
+      <h3>Шаурма Куряча Велика</h3>
+      <div class="price">92 грн</div>
+      <button class="button">У кошик</button>
+    </div>
+    <div class="card">
+      <img src="sav2.png" alt="Шаурма 2">
+      <h3>Шаурма Куряча Мала</h3>
+      <div class="price">60 грн</div>
+      <button class="button">У кошик</button>
+    </div>
+    <div class="card">
+      <img src="sav3.png" alt="Шаурма 3">
+      <h3>Шаурма Середня</h3>
+      <div class="price">76 грн</div>
+      <button class="button">У кошик</button>
+    </div>
+    <div class="card">
+      <img src="sav4.png" alt="Шаурма 4">
+      <h3>Шаурма Свинна Велика</h3>
+      <div class="price">100 грн</div>
+      <button class="button">У кошик</button>
+    </div>
+    <div class="card">
+      <img src="sav5.png" alt="Шаурма 5">
+      <h3>Шаурма Свинна Мала</h3>
+      <div class="price">64 грн</div>
+      <button class="button">У кошик</button>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="tab-content about">
+  <h2>Про нас</h2>
+  <p>Ми готуємо шаурму за старовинними гірськими рецептами з найсвіжішого м'яса, овочів та авторськими соусами. Наминайко — це не просто їжа, це емоція! Ми автоматизували процес замовлення, тож вам залишилось тільки замовити — і смачна шаурма буде у вас менш ніж за 30 хвилин!</p>
+</section>
+
+<section id="contacts" class="tab-content">
+  <h2>Контакти</h2>
+  <p><strong>Адреса:</strong> м. Хмельницький, вул. Шаурменська, 10</p>
+  <p><strong>Телефон:</strong> +38 (098) 123-45-67</p>
+  <p><strong>Години роботи:</strong> щодня з 10:00 до 22:00</p>
+  <p><strong>Email:</strong> info@namynayko.ua</p>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
